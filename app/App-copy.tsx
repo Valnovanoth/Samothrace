@@ -25,8 +25,6 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import MyNavigator from "./AppNavigator";
-
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -73,23 +71,25 @@ function App(): JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <View>
-            <Text style={[styles.header,
-               {
-                 color: isDarkMode ? Colors.light : Colors.dark,
-               },
-             ]}>
-                SAMOTHRACE
-            </Text>
-        </View>
+        <Header />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Accelerometro"></Section>
-          <Section title="Giroscopio"></Section>
-          <Section title="Microfono"></Section>
-          <Section title="Fotocamera"></Section>
+          <Section title="Step One">
+            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+            screen and then come back to see your edits.
+          </Section>
+          <Section title="See Your Changes">
+            <ReloadInstructions />
+          </Section>
+          <Section title="Debug">
+            <DebugInstructions />
+          </Section>
+          <Section title="Learn More">
+            Read the docs to discover what to do next:
+          </Section>
+          <LearnMoreLinks />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -97,11 +97,6 @@ function App(): JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    fontSize: 54,
-    fontWeight: '800',
-    marginTop: 32,
-  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
